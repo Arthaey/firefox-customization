@@ -2,6 +2,7 @@
 
 /* allow userChrome.js to load */
 /* https://www.userchrome.org/what-is-userchrome-js.html */
+/* https://www.reddit.com/r/firefox/comments/bvzdwl/userchromejs_no_longer_working_in_latest_updates/epu0grw/ */
 toolbarbutton#alltabs-button {
   -moz-binding: url("userChrome.xml#js");
 }

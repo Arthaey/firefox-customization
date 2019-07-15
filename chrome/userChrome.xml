@@ -4,6 +4,9 @@ Available for use under the MIT License:
 https://opensource.org/licenses/MIT
 
 https://raw.githubusercontent.com/nuchi/firefox-quantum-userchromejs/master/userChrome.xml
+
+https://www.reddit.com/r/firefox/comments/bvzdwl/userchromejs_no_longer_working_in_latest_updates/epu0grw/
+
  -->
 
 <bindings id="generalBindings"
@@ -11,7 +14,7 @@ https://raw.githubusercontent.com/nuchi/firefox-quantum-userchromejs/master/user
    xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
    xmlns:xbl="http://www.mozilla.org/xbl">
 
-  <binding id="js" extends="chrome://global/content/bindings/toolbarbutton.xml#toolbarbutton-badged">
+  <binding id="js">
     <implementation>
         <constructor><![CDATA[
             function makeRelativePathURI(name) {
