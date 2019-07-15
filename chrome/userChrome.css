@@ -1,0 +1,60 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* allow userChrome.js to load */
+/* https://www.userchrome.org/what-is-userchrome-js.html */
+toolbarbutton#alltabs-button {
+  -moz-binding: url("userChrome.xml#js");
+}
+
+/* CURVED TABS ****************************************************************/
+/* https://www.userchrome.org/samples/userChrome-curved_tabs.css */
+
+/* Curve the background tabs at the upper left and right corners
+   May not work on add-on themes. */
+.tabbrowser-tab {
+  border-radius: 10px 10px 0px 0px / 15px 15px 0px 0px !important;
+}
+/* Curve active tab and slightly overlap neighboring tabs */
+.tabbrowser-tab .tab-background[selected="true"] {
+  margin-left: -1px !important;
+  margin-right: -1px !important;
+  border-radius: 10px 10px 0px 0px / 15px 15px 0px 0px !important;
+}
+/* Shorten the tab line along the tops of tabs */
+.tab-line {
+  margin-left: 9px !important;
+  margin-right: 9px !important;
+}
+/* Shorten the vertical lines between background tabs */
+.tabbrowser-tab::before, .tabbrowser-tab::after {
+  margin-top: 9px !important;
+}
+
+/** "Light" Theme (Dark Text) **/
+
+/* Border the background tabs (10% gray) for greater visibility */
+#main-window:not([lwthemetextcolor="bright"]) .tabbrowser-tab:not([selected="true"]) {
+  border: 1px solid rgba(0,0,0,.1) !important;
+  border-bottom-color: transparent !important;
+  margin-right: -1px !important;
+}
+/* Remove short vertical lines between background tabs */
+#main-window:not([lwthemetextcolor="bright"]) .tabbrowser-tab::before,
+#main-window:not([lwthemetextcolor="bright"]) .tabbrowser-tab::after {
+  border: none !important;
+}
+
+
+/* SHOW "X" TO CLOSE TAB ON HOVER *********************************************/
+/* https://mattsch.com/2016/01/04/firefox-close-tab-button-on-hover/ */
+
+.tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
+        visibility: hidden !important;
+        margin-left: -16px !important;
+}
+
+.tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
+        visibility: visible !important;
+        margin-left: 0px !important;
+        display: -moz-box !important;
+}
