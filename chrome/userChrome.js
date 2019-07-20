@@ -15,7 +15,7 @@
     const extensions = [
       "treestyletab_piro_sakura_ne_jp-sidebar-action",
       "TreeTabs@jagiello.it-sidebar-action",
-      "treetabs_jagiello_it-modified-by-arthaey-sidebar-action",
+      "treetabs_jagiello_it-arthaey-sidebar-action",
     ];
 
     if (!sidebarBox.hidden && extensions.includes(sidebarTabs)) {
