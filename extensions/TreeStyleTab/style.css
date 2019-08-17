@@ -1,0 +1,190 @@
+:root.left #tabbar {
+  direction: ltr;
+  overflow-x: hidden;
+}
+
+.newtab-button {
+  display: none;
+}
+
+
+.highlighter {
+  display: none !important;
+}
+
+.tab {
+  height: 2.5rem;
+  background-color: transparent;
+}
+
+
+/***************************************************************/
+/* TABS LOADING, READ, AND HIDDEN STATUSES */
+/***************************************************************/
+
+
+.tab.unread:not(.not-activated-since-load) .label {
+  background-color: #ffff0035;
+  border-radius: 0.2em;
+}
+
+.tab.not-activated-since-load .label {
+  background-color: #ffff0080;
+  border-radius: 0.2em;
+}
+
+.tab.loading .label {
+  font-style: italic;
+}
+
+.tab.discarded .label {
+  color: #999;
+}
+
+
+
+.tab.hidden .label {
+  font-style: italic;
+}
+
+.tab.hidden {
+  pointer-events: auto !important;
+  position: relative !important;
+  visibility: visible !important;
+}
+
+
+/***************************************************************/
+/* CONTAINER COLORS */
+/***************************************************************/
+
+.tab:not(.hidden):not(.loading):not(:hover) .contextual-identity-marker {
+  position: absolute !important;
+  pointer-events: none;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: unset !important;
+  height: unset !important;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.tab .contextual-identity-marker,
+.tab.hidden .contextual-identity-marker {
+  width: 5px !important;
+}
+
+
+/***************************************************************/
+/* CLOSEBOX */
+/***************************************************************/
+
+.closebox {
+  filter: brightness(.5) sepia(1) saturate(10000%);
+  background-image: url("/sidebar/styles/sidebar/closetab-white.png");
+  cursor: pointer;
+  height: 1rem;
+  width: 1.5rem;
+  margin-right: 1rem;
+  right: 0;
+  position: absolute;
+  z-index: 1000;
+}
+
+.closebox::after {
+  display: none; /* remove redundant "X" character(?) */
+}
+
+.tab:not(:hover) .closebox,
+.tab.active:not(:hover) .closebox {
+  display: none;
+}
+
+.tab:hover .closebox {
+  opacity: 0.6 !important;
+}
+
+.tab.active .closebox {
+  opacity: 1 !important;
+}
+
+
+
+
+/***************************************************************/
+/* TAB NUMBERS */
+/***************************************************************/
+
+#tabbar {
+  counter-reset: visible-tabs;
+}
+
+.tab:not(.discarded):not(.hidden) {
+  counter-increment: visible-tabs;
+}
+
+.tab:not(.discarded):not(.hidden) .extra-items-container {
+  z-index: unset !important;
+}
+
+/* Tab numbers on the right */
+
+.tab {
+  padding-right: 2.3rem !important;
+}
+
+.tab:not(.discarded):not(.hidden) .extra-items-container::after {
+  background: black;
+  color: white;
+  border-radius: 0.5rem;
+  width: 1rem;
+  text-align: center;
+  content: counter(visible-tabs);
+  font-size: x-small;
+  right: 0.7em;
+  padding: 0.2em;
+  pointer-events: none;
+  position: absolute;
+  bottom: 0.5em;
+  z-index: 1000;
+}
+
+.tab.active .extra-items-container::after {
+  background: yellow !important;
+  color: black !important;
+}
+
+/* Tab numbers on the left (requires PR) */
+
+.tab {
+  overflow: visible;
+  padding-left: 2rem;
+  border-left: none;
+  box-shadow: none !important;
+}
+
+.tab .left-edge {
+  display: block;
+}
+
+.tab:not(.discarded):not(.hidden) .left-edge::after {
+  background: #333;
+  color: HighlightText;
+  content: counter(visible-tabs);
+  border-radius: 0.5rem;
+  font-size: x-small;
+  width: 1rem;
+  text-align: center;
+  display: block;
+  pointer-events: none;
+  padding: 0.2rem;
+  margin-left: 0.5rem;
+  z-index: 1000;
+}
+
+.tab.active .left-edge::after {
+  background: yellow !important;
+  color: black !important;
+}
