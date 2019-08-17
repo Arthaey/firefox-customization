@@ -1,8 +1,14 @@
 /* Hide Temporary Containers in Multi-Account Containers UI. */
 @-moz-document url-prefix(moz-extension://998d81a6-bef8-3647-b5f8-76f52bd12473/) {
-
   .container-panel-row [title^="Create x"] {
     display: none !important;
   }
-
 }
+
+/* Style the dummy (group) tabs for Tree Style Tab. */
+/*
+@-moz-document regexp("moz-extension://.+/resources/group-tab.html.*") {
+  :root {
+  }
+}
+*/
