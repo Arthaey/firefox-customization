@@ -169,7 +169,7 @@
   display: block;
 }
 
-.tab:not(.discarded):not(.hidden) .left-edge::after {
+.tab:not(.discarded):not(.hidden):not(.pinned) .left-edge::after {
   background: #333;
   color: HighlightText;
   content: counter(visible-tabs);
