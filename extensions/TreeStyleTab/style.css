@@ -22,32 +22,32 @@
 /* TABS LOADING, READ, AND HIDDEN STATUSES */
 /***************************************************************/
 
-
-.tab.unread:not(.not-activated-since-load) .label {
-  background-color: #ffff0035;
-  border-radius: 0.2em;
-}
-
-.tab.not-activated-since-load .label {
-  background-color: #ffff0080;
-  border-radius: 0.2em;
-}
+/* TAB STATUSES
+ * - loading:     not yet finished getting page from server
+ * - not-activated-since-load: finished loading but never looked at
+ * - unread:      has changes since last look
+ * - discarded:   unload tab from memory (still in tab bar)
+ * - hidden:      remove tab from tab bar (still loaded)
+ */
 
 .tab.loading .label {
   font-style: italic;
 }
 
+.tab.not-activated-since-load .label {
+  background-color: #ffff0050;
+  border-radius: 0.2em;
+}
+
+.tab.unread:not(.not-activated-since-load)::after {
+  content: "*";
+  background-color: #ffff00;
+  border-radius: 0.2em;
+}
+
 .tab.discarded .label {
-  color: #999;
-}
-
-
-
-.tab.hidden .label {
+  color: #555;
   font-style: italic;
-}
-
-.tab.hidden {
   pointer-events: auto !important;
   position: relative !important;
   visibility: visible !important;
@@ -58,7 +58,7 @@
 /* CONTAINER COLORS */
 /***************************************************************/
 
-.tab:not(.hidden):not(.loading):not(:hover) .contextual-identity-marker {
+.tab:not(.hidden):not(.discarded):not(.loading):not(:hover) .contextual-identity-marker {
   position: absolute !important;
   pointer-events: none;
   bottom: 0 !important;
@@ -68,11 +68,10 @@
   width: unset !important;
   height: unset !important;
   z-index: 0;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
-.tab .contextual-identity-marker,
-.tab.hidden .contextual-identity-marker {
+.contextual-identity-marker {
   width: 5px !important;
 }
 
@@ -130,7 +129,7 @@
 }
 
 /* Tab numbers on the right */
-
+/*
 .tab {
   padding-right: 2.3rem !important;
 }
@@ -155,6 +154,7 @@
   background: yellow !important;
   color: black !important;
 }
+*/
 
 /* Tab numbers on the left (requires PR) */
 
